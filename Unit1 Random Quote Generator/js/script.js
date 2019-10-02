@@ -19,44 +19,64 @@ var quotes = [
 { quote: "Basically, at the very bottom of life, which seduces us all, there is only absurdity, and more absurdity. And maybe that's what gives us our joy for living, because the only thing that can defeat absurdity is lucidity.",
   source: "Albert Camus",
   citation: "", 
-  year: "1936" },
-{ quote: "The privilege of absurdity; to which no living creature is subject, but man only.",
+  year: "1936", 
+  category: "Philosophy"
+}, { 
+  quote: "The privilege of absurdity; to which no living creature is subject, but man only.",
   source: "Thomas Hobbes",
   citation: "Leviathan, Chapter v. Of Reason and Science",
-  year: "1651" },
-{ quote: "Funny is as funny does, and funny puts on a walrus mask and slowly gyrates in a mall food court. I laugh at absurdity hardest, then stories, then observations, then bearded men on roller skates.",
+  year: "1651",
+  category: "Philosophy" 
+}, { 
+  quote: "Funny is as funny does, and funny puts on a walrus mask and slowly gyrates in a mall food court. I laugh at absurdity hardest, then stories, then observations, then bearded men on roller skates.",
   source: "T.J. Miller",
   citation: "interview with Mandatory.com",
-  year: "2011"},
-{ quote: "Absurdity is what I like most in life, and there's humor in struggling in ignorance. If you saw a man repeatedly running into a wall until he was a bloody pulp, after a while it would make you laugh because it becomes absurd.",
+  year: "2011",
+  category: "Humor"
+}, { 
+  quote: "Absurdity is what I like most in life, and there's humor in struggling in ignorance. If you saw a man repeatedly running into a wall until he was a bloody pulp, after a while it would make you laugh because it becomes absurd.",
   source: "David Lynch",
   citation: "interview with L.A. Times",
-  year: "1989"},
-{ quote: "Modern man must descend the spiral of his own absurdity to the lowest point; only then can he look beyond it. It is obviously impossible to get around it, jump over it, or simply avoid it.", 
+  year: "1989"
+}, { 
+  quote: "Modern man must descend the spiral of his own absurdity to the lowest point; only then can he look beyond it. It is obviously impossible to get around it, jump over it, or simply avoid it.", 
   source: "Vaclav Havel",
   citation: "Disturbing the Peace",
-  year: "1990"},
-{ quote: "If you and I believe two different things, I can attack you verbally all day, but if I can make you laugh and show you the absurdity of your argument, it will lower you guard. People let you in then.",
+  year: "1990",
+  category: "Philosophy"
+}, { 
+  quote: "If you and I believe two different things, I can attack you verbally all day, but if I can make you laugh and show you the absurdity of your argument, it will lower you guard. People let you in then.",
   source: "Hasan Minhaj",
   citation: "interview with Rediff.com",
-  year: "2017"},
-{ quote: "Happiness and the absurd are two sons of the same earth. They are inseparable.",
+  year: "2017",
+  category: "Humor"
+}, { 
+  quote: "Happiness and the absurd are two sons of the same earth. They are inseparable.",
   source: "Albert Camus",
   citation: "The Myth of Sisyphus",
-  year: "1942"},
-{ quote: "We can regard our life as a uselessly disturbing episode in the blissful repose of nothingness.",
+  year: "1942",
+  category: "Philosophy"
+}, { 
+  quote: "We can regard our life as a uselessly disturbing episode in the blissful repose of nothingness.",
   source: "Arthur Shopenhauer",
   citation: "The Wisdom of Life",
-  year: "1851"},
-{ quote: "Nobody exists on purpose. Nobody belongs anywhere. Everybody's gonna die. Come watch TV",
+  year: "1851",
+  category: "Philosophy"
+}, { 
+  quote: "Nobody exists on purpose. Nobody belongs anywhere. Everybody's gonna die. Come watch TV",
   source: "Morty Smith",
   citation: "Rick and Morty, Season 1, Episode 8 'Rixty Minutes'",
-  year: "2014"},
-{ quote: "Strikes and gutters, ups and downs.",
+  year: "2014",
+  category: "Humor"
+}, { 
+  quote: "Strikes and gutters, ups and downs.",
   source: "Jeffrey 'The Dude' Lebowski",
   citation: "The Big Lebowski",
-  year: "1998"}
+  year: "1998",
+  category: "Humor (but also Philosophy)"
+   }
 ];
+
 
 console.log(quotes);
 
@@ -67,9 +87,9 @@ console.log(quotes);
 ***/
 
 function getRandomQuote(){
-  var randomNumber = Math.floor(Math.random() * (quotes.length));
-  getRandomQuote = quotes[randomNumber];
-  return getRandomQuote;
+  let randomQuote = Math.floor(Math.random() * quotes.length);
+  
+  return quotes[randomQuote];
 }
 
 
@@ -86,12 +106,26 @@ function getRandomQuote(){
    - Set the `innerHTML` of the `quote-box` div to the HTML string. 
 ***/
 
+
 function printQuote(){
-
-
+  let freshQuote = getRandomQuote();
+  let html = "<p class= 'quote'>" + freshQuote.quote + "</p>";
+  html += "<p class='source'>" + freshQuote.source;
+  if ("citation" in freshQuote){
+      html += '<span class="citation"> ' + freshQuote.citation + '</span>';
+    }
+  if ("category" in freshQuote){
+      html += '<span class="category">' + freshQuote.category + '</span>';
+    }
+  if ("year" in freshQuote){
+      html += '<span class="year"> ' + freshQuote.year + '</span>' 
+      "</p>";
+    }
+ 
+    document.getElementById("quote-box").innerHTML = html;
 }
 
-
+printQuote();
 /***
   When the "Show another quote" button is clicked, the event listener 
   below will be triggered, and it will call, or "invoke", the `printQuote` 
