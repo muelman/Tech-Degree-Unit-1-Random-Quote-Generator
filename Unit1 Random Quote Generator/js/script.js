@@ -91,11 +91,12 @@ function getRandomColor(){
   var c = Math.floor(Math.random() * 256);
   let randomBgColor = (" + a + "," + b + "," + c +");
 
-
+  return randomBgColor
+  
   document.body.style.backgroundColor = randomBgColor;
-    console.log(randomBgColor);
+  
+  console.log(randomBgColor);
   }
-  } 
 
 /***
   Creates a function that writes the quote object and source object from 'randomQuote' to HTML. 
@@ -123,5 +124,14 @@ function printQuote(){
 }
 
 printQuote();
+
+function printColor(){
+  let freshColor = getRandomColor();
+  let css = <p class= 'background-color'>" + freshcolor + " </p>
+  
+  document.getElementById("background-color").innerHTML = css 
+}
+
+printColor();
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
