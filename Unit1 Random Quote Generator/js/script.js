@@ -85,10 +85,21 @@ function getRandomQuote(){
   return quotes[randomQuote];
 }
 
+function getRandomColor(){
+  var a = Math.floor(Math.random() * 256);
+  var b = Math.floor(Math.random() * 256);
+  var c = Math.floor(Math.random() * 256);
+  let randomBgColor = (" + a + "," + b + "," + c +");
+
+
+  document.body.style.backgroundColor = randomBgColor;
+    console.log(randomBgColor);
+  }
+  } 
 
 /***
   Creates a function that writes the quote object and source object from 'randomQuote' to HTML. 
-  It then uses an "if" conditional statement to check for the citation, category, and date objects in the array.
+  It then uses a series of "if" conditional statements to check for the citation, category, and date objects in the array.
   It then writes all available quote objects into a concatenated string and prints them to the quote box.  
 ***/
 
