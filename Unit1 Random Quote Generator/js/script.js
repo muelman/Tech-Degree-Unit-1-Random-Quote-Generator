@@ -85,12 +85,18 @@ function getRandomQuote(){
   return quotes[randomQuote];
 }
 
+/*
+  Creates a function that stores three random numbers based on the Math.floor and Math.random methods
+  multiplied by 256 (RGB colors).
+  It then returns those three numbers and coverts them into a random background color. 
+*/
+
 function getRandomColor(){
   var a = Math.floor(Math.random() * 256);
   var b = Math.floor(Math.random() * 256);
   var c = Math.floor(Math.random() * 256);
-  let randomBgColor = (" + a + "," + b + "," + c +");
-
+  let randomBgColor = (a + ", " + b + ", " + c);
+  console.log(randomBgColor);
   return randomBgColor
   
   document.body.style.backgroundColor = randomBgColor;
@@ -121,15 +127,21 @@ function printQuote(){
     }
  
     document.getElementById("quote-box").innerHTML = html;
+    printColor();
 }
+
 
 printQuote();
 
+/*
+  Creates a function that takes the getRandomColor function 
+  and prints it to the page.
+ */
+
 function printColor(){
   let freshColor = getRandomColor();
-  let css = <p class= 'background-color'>" + freshcolor + " </p>
+  document.body.style.backgroundColor = "rgb(" + freshColor + ")";
   
-  document.getElementById("background-color").innerHTML = css 
 }
 
 printColor();
