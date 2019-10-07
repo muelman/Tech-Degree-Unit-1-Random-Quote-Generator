@@ -92,10 +92,10 @@ function getRandomQuote(){
 */
 
 function getRandomColor(){
-  var a = Math.floor(Math.random() * 256);
-  var b = Math.floor(Math.random() * 256);
-  var c = Math.floor(Math.random() * 256);
-  let randomBgColor = (a + ", " + b + ", " + c);
+  var red = Math.floor(Math.random() * 256);
+  var green = Math.floor(Math.random() * 256);
+  var blue = Math.floor(Math.random() * 256);
+  let randomBgColor = (red + ", " + green + ", " + blue);
   console.log(randomBgColor);
   return randomBgColor
   
@@ -103,6 +103,16 @@ function getRandomColor(){
   
   console.log(randomBgColor);
   }
+
+/*
+  Creates a function that takes the getRandomColor function 
+  and prints it to the page.
+ */
+
+function printColor(){
+  let freshColor = getRandomColor();
+  document.body.style.backgroundColor = "rgb(" + freshColor + ")";
+}
 
 /***
   Creates a function that writes the quote object and source object from 'randomQuote' to HTML. 
@@ -133,17 +143,7 @@ function printQuote(){
 
 printQuote();
 
-/*
-  Creates a function that takes the getRandomColor function 
-  and prints it to the page.
- */
 
-function printColor(){
-  let freshColor = getRandomColor();
-  document.body.style.backgroundColor = "rgb(" + freshColor + ")";
-  
-}
 
-printColor();
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
